@@ -1,0 +1,59 @@
+<app-shell>
+
+
+  <div class="row">
+
+    <div class="col-6 offset-3">
+      <form (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label> Title </label>
+          <input type="text" class="form-control" [(ngModel)]="todo.title" ng-minlength="5" name="title"
+                 placeholder="Title"
+                 #title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required minlength="5"/>
+          <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+            <div *ngIf="title.errors.required">Title is required</div>
+            <div *ngIf="title.errors.minlength">Title must be at least 5 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+
+          <textarea [(ngModel)]="todo.description" class="form-control" placeholder="Description" name="description"
+                    #description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && description.invalid }" required
+                    minlength="5"></textarea>
+          <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+            <div *ngIf="description.errors.required">Description is required</div>
+            <div *ngIf="description.errors.minlength">Description must be at least 5 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+
+          <label>Event Time</label>
+
+          <div *ngIf="f.submitted && todo.eventTime == ''" class="invalid-special-widget" style="">
+            <div>Date and Time required</div>
+          </div>
+
+          <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="5"
+                               [(ngModel)]="todo.eventTime"
+                               name="eventTime"
+                               #eventTime="ngModel"
+                               required>
+          </dl-date-time-picker>
+
+        </div>
+
+        <div class="form-group">
+
+          <!--<input type="button" (click)="submit()" value="Create" class="btn-primary btn" /> -->
+          <button class="btn btn-primary">Ceate</button>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+</app-shell>

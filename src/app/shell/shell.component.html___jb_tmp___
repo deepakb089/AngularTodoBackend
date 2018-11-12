@@ -1,0 +1,27 @@
+
+<div>
+
+  <app-head></app-head>
+
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-8 offset-2">
+      <app-messages></app-messages>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div>
+    <ng-content></ng-content>
+  </div>
+
+  <app-foot></app-foot>
+
+
+</div>
+

@@ -1,0 +1,71 @@
+<app-shell>
+
+  <div>
+
+    <div class="row">
+
+      <div class="col-8 offset-2">
+
+
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col"> Description</th>
+
+              <th>
+                Date / Time
+              </th>
+
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+
+
+          <tr *ngFor="let item of list">
+            <th><input type="checkbox" (change)="$event.target.checked ? addToIds(item.id) : removeFromIds(item.id)"> </th>
+            <th scope="row"> {{item.id}}</th>
+            <td> {{item.title}}</td>
+            <td> {{ item.description }}</td>
+
+            <td>
+
+                  {{ dateRedable(item.eventTime) }}
+
+            </td>
+
+            <td>
+
+
+              <button class="btn btn-sm" (click)="edit(item)" style="margin-right: 10px">
+                <i class="fa fa-pencil"></i>
+              </button>
+
+
+              <button class="btn btn-sm btn-danger" (click)="remove(item)">
+                <i class="fa fa-times"></i>
+              </button>
+
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+
+        <div class="text-right">
+          <button class="btn btn-danger" (click)="deleteSelected()">Delete selected</button>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</app-shell>
